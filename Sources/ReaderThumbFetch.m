@@ -82,8 +82,8 @@
 	else // Existing thumb image not found - so create and queue up a thumb render operation on the work queue
 	{
 		ReaderThumbRender *thumbRender = [[ReaderThumbRender alloc] initWithRequest:request]; // Create a thumb render operation
-
-		[thumbRender setQueuePriority:self.queuePriority]; [thumbRender setThreadPriority:(self.threadPriority - 0.1)]; // Priority
+		
+		[thumbRender setQueuePriority:self.queuePriority]; [thumbRender setQualityOfService:NSQualityOfServiceUserInteractive]; // Priority
 
 		if (self.isCancelled == NO) // We're not cancelled - so update things and add the render operation to the work queue
 		{
